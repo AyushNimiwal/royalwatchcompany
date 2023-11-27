@@ -62,7 +62,7 @@ function AddProduct() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto ">
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-40 m-2 ">
         <label className="block mb-4">
           <span className="text-gray-700">Title:</span>
           <input

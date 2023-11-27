@@ -105,6 +105,7 @@ function ItemDetails() {
   };
 
   return (
+    
     <div className="w-full mt-[5rem] md:mt-0 h-full flex items-center justify-center bg-white p-5">
       <div className=" md:w-[1250px] w-screen h-[850px] bg-slate-600 md:flex justify-center items-center">
         <div className="w-full md:w-1/2 h-full bg-white/30 p-4 backdrop-blur-md object-cover">
