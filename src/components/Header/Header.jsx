@@ -21,7 +21,7 @@ function Header({ userName, isshow, setshow }) {
           className=" w-34 h-24 cursor-pointer hover:scale-110 hover:underline hover:transition-all"
         />
       </NavLink>
-      <div className="md:flex  hidden justify-evenly gap-12 mb-5 text-xl ">
+      <div className="md:flex  hidden justify-evenly gap-12 mb-6 text-xl ">
         <NavLink
           to="/mens"
           className="mt-9 font-semibold hover:scale-110 hover:underline hover:transition-all cursor-pointer"

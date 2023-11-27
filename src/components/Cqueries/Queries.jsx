@@ -1,7 +1,6 @@
 import React from "react";
 import { fs } from "../../config/config";
 import { doc,deleteDoc, getDocs, collection, updateDoc, where } from "firebase/firestore";
-import { query } from "firebase/database";
 
 function Queries() {
   const [data, setData] = React.useState([]);
@@ -41,12 +40,12 @@ const QuerieBox = ({uid, name, email, phoneNo, address, isDone }) => {
     await updateDoc(doneRef, {
       done: !isDone,
     });
-    window.location.reload();
+    window.location.assign("/queries");
   };
   const handleDelete = async () => {
     const deleteRef = doc(fs, "queries", uid);
     await deleteDoc(deleteRef);
-    window.location.reload();
+    window.location.assign("/queries");
   }
   
   return (
