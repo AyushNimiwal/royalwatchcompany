@@ -91,7 +91,7 @@ function App() {
           }   
           </div>
         </div>
-        <div className='mt-6'>
+        <div className='mt-2'>
           <div className='w-full text-center text-xl hover:underline transition-all select-none text-slate-500'>
             Womens Watches
           </div>
