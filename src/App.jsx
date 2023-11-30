@@ -9,6 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Card from './Card/Card';
 import { getDatabase, ref, onValue } from "firebase/database";
 import { Link } from 'react-router-dom'
+import Footer from './components/Footer/Footer'
 function App() {
   const [data, setData] = React.useState([]);
   const [array, setArray] = React.useState([]);
@@ -105,6 +106,7 @@ function App() {
           }   
           </div>
         </div>
+      <Footer/>
       </div>
       </div>
     </>

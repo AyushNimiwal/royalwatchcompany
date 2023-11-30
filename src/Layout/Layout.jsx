@@ -46,6 +46,7 @@ function Layout() {
         </div>
         <Outlet/>
       </div>
+      
     </div>
   )
 }
