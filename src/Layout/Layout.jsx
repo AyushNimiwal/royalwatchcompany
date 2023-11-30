@@ -35,10 +35,10 @@ function Layout() {
   return (
     <div className=' w-screen h-screen'>
       <div className=' relative '>
-        <div className=' absolute w-48 h-48 p-[-2.5rem] -top-10 -left-8 rounded-full bg-slate-300 z-[-1000] bg-gradient-to-r from-blue-400 from-15% to-cyan-300 blur-xl'></div>
-        <div className=' absolute w-48 h-48 p-[-2.5rem] circle -top-10 left-2/4 rounded-full bg-slate-300 z-[-1000] bg-gradient-to-r from-blue-400 from-15% to-cyan-300 blur-3xl'></div>
-        <div className=' absolute w-72 h-72 m-[2.5rem] circle top-96 left-96 rounded-full bg-slate-300 z-[-1000] bg-gradient-to-tr from-cyan-300  to-blue-300 blur-3xl'></div>
-        <div className=' absolute w-48 h-48 m-[2.5rem] top-56 -right-10 rounded-full bg-slate-300 z-[-1000] bg-gradient-to-r from-blue-300 from-15% to-cyan-300 blur-3xl'></div>
+        <div className=' absolute w-64 h-64 p-[-2.5rem] -top-20 -left-12 rounded-full bg-slate-300 z-[-1000] bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))]  from-indigo-900 to-sky-400 blur-2xl'></div>
+        <div className=' absolute w-48 h-48 p-[-2.5rem] circle -top-10 left-2/4 rounded-full bg-slate-300 z-[-1000] bg-gradient-to-r from-blue-400 from-15% to-cyan-300 blur-2xl'></div>
+        <div className=' absolute w-72 h-72 m-[2.5rem] circle top-96 left-96 rounded-full bg-slate-300 z-[-1000] bg-gradient-to-tr from-cyan-300  to-blue-300 blur-2xl'></div>
+        <div className=' absolute w-48 h-48 m-[2.5rem] top-56 -right-10 rounded-full bg-slate-300 z-[-1000] bg-gradient-to-r from-blue-300 from-15% to-cyan-300 blur-2xl'></div>
         <div className='w-full px-6 flex justify-between'> 
           <img className=' w-40 h-20 select-none' src={rwlogo} />
           <Navbar isshow={show} setshow={setShow} userName={user}/>
