@@ -13,7 +13,7 @@ function Navbar({ userName, isshow, setshow }) {
     });
   };
   return (
-    <div className=' my-6 mx-4 text-lg rounded-md bg-black/5 font-semibold shadow-xl items-center z-20 absolute right-5'>
+    <div className={` my-6 mx-4 text-lg rounded-md ${burgerItem?"bg-black/30":"bg-black/10"} font-semibold shadow-xl items-center z-20 absolute right-5`}>
         <ul className='flex justify-between items-center'>
             <li className='px-4 py-1 hover:bg-black/10 rounded-md cursor-pointer nav-links select-none'><NavLink to='/'>Home</NavLink></li>
             <li className='px-4 py-1 hover:bg-black/10 rounded-md cursor-pointer nav-links select-none'><NavLink to='/mens'>Mens</NavLink></li>
