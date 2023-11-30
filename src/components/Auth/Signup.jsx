@@ -1,8 +1,8 @@
 import React from 'react'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { fs } from '../../config/config'
-import { Link, Navigate } from 'react-router-dom';
-import { collection, setDoc, doc } from "firebase/firestore"; 
+import { Link } from 'react-router-dom';
+import {setDoc, doc } from "firebase/firestore"; 
 function Signup() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -46,17 +46,17 @@ function Signup() {
             value={name}
             required
             onChange={(e) => setName(e.target.value)}
-            placeholder='Enter your name'className='border border-gray-300 rounded-md p-2 mt-3 w-96  text-black'/>
+            placeholder='Enter your name'className='border border-gray-300 rounded-md p-2 mt-3 md:w-96 w-64   text-black'/>
             <input type='text'
             value={email}
             required
             onChange={(e) => setEmail(e.target.value)}
-            placeholder='Enter your email' className='border border-gray-300 rounded-md p-2 mt-3 w-96  text-black'/>
+            placeholder='Enter your email' className='border border-gray-300 rounded-md p-2 mt-3 md:w-96 w-64  text-black'/>
             <input type='text'
             value={password}
             required
             onChange={(e) => setPassword(e.target.value)}
-            placeholder='Enter your password' className='border border-gray-300 rounded-md p-2 mt-3 w-96  text-black'/>
+            placeholder='Enter your password' className='border border-gray-300 rounded-md p-2 mt-3 md:w-96 w-64  text-black'/>
             <button
             onClick={signupHandle}
             className='bg-black text-white w-24 mt-4 p-2 rounded-md'>Signup</button>

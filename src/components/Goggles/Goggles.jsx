@@ -1,7 +1,7 @@
 import React from 'react'
 import { getDatabase, ref, onValue } from "firebase/database";
 import Card from '../../Card/Card.jsx';
-function Accessories() {
+function Goggles() {
   const [data, setData] = React.useState([]);
   const [array, setArray] = React.useState([]);
   const fetchData = () => {
@@ -20,11 +20,11 @@ function Accessories() {
   },[]);
   return (
     <>
-      <div className='text-slate-500 m-5 text-2xl'>Accessories</div>
+      <div className='text-slate-500 m-5 text-2xl'>Goggles</div>
       <div className='w-screen flex flex-col justify-center items-center md:block mt-[6rem] md:mt-0'>
       {
           array.map((item) => (
-              data[item].tag==='accessories'?
+              data[item].tag==='goggles'?
             <Card key={item} product={data[item]} id={item} />
             :<></>
           ))
@@ -34,4 +34,4 @@ function Accessories() {
   )
 }
 
-export default Accessories
+export default Goggles

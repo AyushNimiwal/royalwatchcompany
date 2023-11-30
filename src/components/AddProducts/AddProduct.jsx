@@ -15,30 +15,31 @@ function AddProduct() {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState([]);
   const [uuid, setUUID] = useState("");
+  const [msg, setMsg] = useState("");
   const imageState=useRef(null);
   const handleSubmit = (e) => {
-    let images =[];
-    image.map((img) => {
-        if(!images.includes(img) && img!=null){
-            images.push(img);
-        }
-    });
-    console.log(images);
-    e.preventDefault();
-    DatabaseSet(DatabaseRef(db, `/${uuid}`), {
-      title,
-      description,
-      tag,
-      price,
-      images,
-    });
-    setImage([null]);
-    setTitle("");
-    setDescription("");
-    setTag("");
-    setPrice("");
-    imageState.current.value=null;
-    alert("Successfull");
+      let images =[];
+      image.map((img) => {
+          if(!images.includes(img) && img!=null){
+              images.push(img);
+          }
+      });
+      console.log(images);
+      e.preventDefault();
+      DatabaseSet(DatabaseRef(db, `/${uuid}`), {
+        title,
+        description,
+        tag,
+        price,
+        images,
+      });
+      setImage([null]);
+      setTitle("");
+      setDescription("");
+      setTag("");
+      setPrice("");
+      setMsg("");
+      imageState.current.value=null;
   };
   
   const handleImageChange = async (e) => {
@@ -56,69 +57,73 @@ function AddProduct() {
         }
       );
     }
-    alert("Process Completed");
+    setMsg("Please wait 10 seconds before adding another product");
+      setTimeout(() => {
+        setMsg("Now you can add product");
+      }, 10000);
   };
-
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-40 m-2 ">
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-40  ">
         <label className="block mb-4">
-          <span className="text-gray-700">Title:</span>
+          <span className="text-gray-700">Title:<br/></span>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
+            className="border border-gray-300 rounded-md p-2 mt-1 md:w-full w-96   text-black"
             required
           />
         </label>
         <label className="block mb-4">
-          <span className="text-gray-700">Description:</span>
+          <span className="text-gray-700">Description:<br/></span>
           <input
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
+            className="border border-gray-300 rounded-md p-2 mt-1 md:w-full w-96   text-black"
             required
           />
         </label>
         <label className="block mb-4">
-          <span className="text-gray-700">Tag:</span>
+          <span className="text-gray-700">Tag:<br/></span>
           <input
             type="text"
             value={tag}
             onChange={(e) => setTag(e.target.value)}
-            className="border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
+            className="border border-gray-300 rounded-md p-2 mt-1 md:w-full w-96   text-black"
             required
           />
         </label>
         <label className="block mb-4">
-          <span className="text-gray-700">Price:</span>
+          <span className="text-gray-700">Price:<br/></span>
           <input
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className="border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
+            className="border border-gray-300 rounded-md p-2 mt-1 md:w-full w-96   text-black"
             required
           />
         </label>
 
         <label className="block mb-4">
-          <span className="text-gray-700">Images:</span>
+          <span className="text-gray-700">Images:<br/></span>
           <input
             type="file"
             accept="image/*"
             ref={imageState}
             multiple
             onChange={handleImageChange}
-            className="border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
+            className="border border-gray-300 rounded-md p-2 mt-1 md:w-full w-96   text-black"
             required
           />
         </label>
+        <p className="text-red-500">{msg}</p>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          disabled={image.length>0?false:true}
+          className="bg-blue-500 hover:bg-blue-700text-white font-bold py-2 px-4 rounded"
         >
           Add Product
         </button>

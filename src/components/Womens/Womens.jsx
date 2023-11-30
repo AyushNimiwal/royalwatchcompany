@@ -19,15 +19,18 @@ function Womens() {
     fetchData();
   },[]);
   return (
-    <div className='w-screen flex flex-col justify-center items-center md:block mt-[6rem] md:mt-0'>
-    {
-        array.map((item) => (
-            data[item].tag==='womens'?
-          <Card key={item} product={data[item]} id={item} />
-          :<></>
-        ))
-    }
-    </div>
+    <>
+      <div className='text-slate-500 m-5 text-2xl'>Womens Watches</div>
+      <div className='w-screen flex flex-col justify-center items-center md:block mt-[6rem] md:mt-0'>
+      {
+          array.map((item) => (
+              data[item].tag==='womens'?
+            <Card key={item} product={data[item]} id={item} />
+            :<></>
+          ))
+      }
+      </div>
+    </>
   )
 }
 

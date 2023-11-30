@@ -1,38 +1,112 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import './App.css'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import Layout from './Layout'
-import Home from './components/Home/Home'
-import ItemDetails from './components/ItemDetails/ItemDetails'
-import Accessories from './components/Accessories/Accessories'
-import Womens from './components/Womens/Womens'
-import Mens from './components/Mens/Mens'
-import About from './components/About/About'
-import Signup from './components/Auth/Signup'
-import Login from './components/Auth/Login'
-import AddProduct from './components/AddProducts/AddProduct'
-import Queries from './components/Cqueries/Queries'
-
+import l8 from './assets/l8.jpg'
+import l9 from './assets/l9.jpg'
+import l3jpg from './assets/l3jpg.jpg'
+import lady from './assets/lady.jpg'
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import Card from './Card/Card';
+import { getDatabase, ref, onValue } from "firebase/database";
+import { Link } from 'react-router-dom'
 function App() {
-  const router= createBrowserRouter(
-    createRoutesFromElements(
-      <Route path='/' element={<Layout />}>
-        <Route path='/' element={<Home />} />
-        <Route path='/mens' element={<Mens />} />
-        <Route path='/womens' element={<Womens />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/queries' element={<Queries />} />
-        <Route path='/addproduct' element={<AddProduct />} />
-        <Route path='/accessories' element={<Accessories />} />
-        <Route path='/:id' element={<ItemDetails/>}/>
-      </Route>
-    )
-  )
+  const [data, setData] = React.useState([]);
+  const [array, setArray] = React.useState([]);
+  let Bcount=0;
+  let Wcount=0;
+  let Mcount=0;
+  const fetchData = () => {
+    const db = getDatabase();
+    const databaseRef = ref(db, '/');
+    onValue(databaseRef, (snapshot) => {
+      const res = snapshot.val();
+      if(res){
+        setData(res);
+        setArray(...array,Object.keys(res));
+      }
+    });
+  }
+  React.useEffect(() => {
+    fetchData();
+  },[]);
+  
   return (
     <>
-      <RouterProvider  router={router} />
+    <div className=' w-screen h-screen block'>
+      <div className=' relative '>
+        <div className='w-full flex items-top justify-center'>
+          <Carousel 
+          autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false} showArrows={false} interval={3000} transitionTime={1000} className=' w-3/4 shadow-2xl div-carousel'>
+            
+              <div className='w-full object-cover div-carousel'>
+                <img className='w-full h-full' src={l8} />
+              </div>
+              <div className='w-full object-cover div-carousel'>
+                <img className='w-full h-full' src={l9} />
+              </div>
+          </Carousel>
+        
+        </div>
+        <div className='mt-10'>
+          <div className='w-full text-center text-xl animate-bounce hover:underline transition-all select-none text-slate-500'>
+            BestSeller
+          </div>
+          <div className='w-full flex justify-evenly mt-10 card-show'>
+          {
+              array.map((item) => (
+                  data[item].tag==='bestseller'&&(Bcount=Bcount+1)<4?
+                    <Card key={item} product={data[item]} id={item} />
+                :<></>
+              ))
+          }   
+          </div>
+        </div>
+        <div className='flex justify-around mt-14 two-card-show'>
+          <Link to='/mens'>
+            <div className=' m-4 relative object-cover two-items rounded-xl hover:shadow-2xl hover:scale-95 transition-transform'>
+                <img src={l3jpg} className=' absolute rounded-xl two-item-img hover:scale-95'/>
+                <div className='w-full h-full z-10 bg-black/30 absolute rounded-xl'>
+                        <div className='w-full h-full flex justify-center items-center text-3xl text-white font-semibold text-center hover:scale-125 transition-transform'>Mens Watches</div>
+                </div>
+            </div></Link>
+            <Link to='/womens'>
+            <div className=' m-4 relative object-cover two-items rounded-xl hover:shadow-2xl hover:scale-95 transition-transform'>
+                <img src={lady} className=' absolute rounded-xl two-item-img hover:scale-95'/>
+                <div className='w-full h-full z-10 bg-black/30 absolute rounded-xl'>
+                        <div className='w-full h-full flex justify-center items-center text-3xl text-white font-semibold text-center hover:scale-125 transition-transform'>Womens Watches</div>
+                </div> 
+            </div></Link>
+        </div>
+        <div className='mt-10'>
+          <div className='w-full text-center text-xl hover:underline transition-all select-none text-slate-500'>
+            Mens Watches
+          </div>
+          <div className='w-full flex justify-evenly mt-10 card-show'>
+          {
+              array.map((item) => (
+                data[item].tag==='mens'&&(Mcount=Mcount+1)<4?
+                  <Card key={item} product={data[item]} id={item} />
+              :<></>
+            ))
+          }   
+          </div>
+        </div>
+        <div className='mt-10'>
+          <div className='w-full text-center text-xl hover:underline transition-all select-none text-slate-500'>
+            Womens Watches
+          </div>
+          <div className='w-full flex justify-evenly mt-10 card-show'>
+          {
+              array.map((item) => (
+                data[item].tag==='womens'&&(Wcount=Wcount+1)<4?
+                  <Card key={item} product={data[item]} id={item} />
+              :<></>
+            ))
+          }   
+          </div>
+        </div>
+      </div>
+      </div>
     </>
   )
 }

@@ -15,7 +15,7 @@ function Queries() {
     fetchData();
   }, []);
   return (
-    <main className="w-[90vw] h-screen mx-auto px-[5rem]">
+    <main className="w-auto h-screen mx-auto px-[5rem]">
       {data.map((item, index) => {
         return (
           <QuerieBox
@@ -26,6 +26,7 @@ function Queries() {
             email={item.email}
             phoneNo={item.phone}
             address={item.address}
+            product={item.product}
           />
         );
       })}
@@ -33,7 +34,7 @@ function Queries() {
   );
 }
 
-const QuerieBox = ({uid, name, email, phoneNo, address, isDone }) => {
+const QuerieBox = ({uid, name, email, phoneNo, address, isDone ,product}) => {
 
   const handleDone = async () => {
     const doneRef = doc(fs, "queries", uid);
@@ -50,28 +51,35 @@ const QuerieBox = ({uid, name, email, phoneNo, address, isDone }) => {
   
   return (
     <div
-      className={`text-black relative my-4 ${
+      className={`text-black relative overflow-auto my-4 ${
         isDone
           ? `bg-green-400 [box-shadow:_rgba(99,99,99,0.2)_0px_2px_8px_0px]`
           : `bg-gray-300 [box-shadow:_rgba(99,99,99,0.2)_0px_2px_8px_0px]`
-      }`}
+      } rounded-md`}
     >
-      <div className="flex justify-around items-center py-10">
-        <h1 className="text-black font-bold text-3xl">{name}</h1>
-        <h1 className="text-black ">{email}</h1>
-        <h1 className="text-black">{phoneNo}</h1>
-        <h1 className="text-black">{address}</h1>
-        <button
-          onClick={handleDone}
-          className="bg-green-700 text-white px-4 py-2 rounded-md"
-        >
-          {!isDone ? `Done` : `Undo`}
-        </button>
-        <button
-          onClick={handleDelete}
-         className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700">
-          Delete
-        </button>
+      <div className="md:flex  justify-around items-center py-5 px-3 rounded-lg">
+        
+        <h1 className=" text-black font-medium text-2xl">{product}</h1>
+        <div className="flex flex-col">
+          <h1 className="text-gray-500 text-2xl font-medium">Customer Details:</h1>
+          <h1 className="text-black ">{name}</h1>
+          <h1 className="text-black">{email}</h1>
+          <h1 className="text-black">{phoneNo}</h1>
+          <h1 className="text-black">{address}</h1>
+        </div>
+        <div className="flex flex-col gap-5">
+          <button
+            onClick={handleDone}
+            className="bg-green-700 text-white px-4 py-2 rounded-md"
+          >
+            {!isDone ? `Done` : `Undo`}
+          </button>
+          <button
+            onClick={handleDelete}
+          className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700">
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );

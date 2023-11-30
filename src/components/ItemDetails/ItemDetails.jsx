@@ -20,6 +20,7 @@ function ItemDetails() {
   const [phone, setPhone] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [success, setsuccess] = React.useState("");
+  const [product, setProduct] = React.useState("");
   const auth = getAuth();
   const [show, setShow] = React.useState(false);
 
@@ -92,12 +93,14 @@ function ItemDetails() {
         address: address,
         phone: phone,
         done: false,
+        product:product,
       });
       setsuccess('We will contact you soon!');
       setName("");
       setAddress("");
       setPhone("");
       setEmail("");
+      setProduct("");
       setTimeout(() => {
         setsuccess("");
       }, 3000);
@@ -106,9 +109,9 @@ function ItemDetails() {
 
   return (
     
-    <div className="w-full mt-[5rem] md:mt-0 h-full flex items-center justify-center bg-white p-5">
-      <div className=" md:w-[1250px] w-screen h-[850px] bg-slate-600 md:flex justify-center items-center">
-        <div className="w-full md:w-1/2 h-full bg-white/30 p-4 backdrop-blur-md object-cover">
+    <div className="w-full mt-[5rem] md:mt-5 h-full flex items-center justify-center bg-white/25 p-5">
+      <div className=" md:w-[1250px] w-screen md:h-[750px] h-full bg-white/30 md:flex justify-center  items-center">
+        <div className="w-full md:w-1/2 md:mb-0 mb-28 h-full bg-white/30 p-2 md:p-4 backdrop-blur-md object-cover">
           
           <Carousel
             axis='horizontal'
@@ -117,11 +120,11 @@ function ItemDetails() {
             showThumbs
             showArrows={false}
             showStatus={false}
-            className='w-full h-[700px]'
+            className='w-full md:h-[600px] h-[500px]'
           >
             {
               img.length>0 && img.map((image) => (
-                  <div className="block m-auto h-[700px] w-full object-cover">
+                  <div className="block m-auto md:h-[600px] h-[500px] w-full object-cover">
                     <img
                       className=" w-full h-full rounded-md"
                       src={image}
@@ -133,7 +136,7 @@ function ItemDetails() {
         </div>
         {array.map((item) =>
           item === id ? (
-            <div key={id} className="w-full md:w-1/2 h-full p-5 bg-zinc-800">
+            <div key={id} className="w-full md:w-1/2 h-full p-5 bg-zinc-800 rounded-md">
               <div className=" text-4xl font-serif mb-5">
                 {data[item].title}
               </div>
@@ -142,7 +145,7 @@ function ItemDetails() {
                 ₹ {data[item].price}
               </div>
               <div className=" text-yellow-300 font-mono text-2xl py-2 px-8 text-center rounded-full">
-                FILL THE DETAILS TO BUY:{" "}
+                FILL THE DETAILS TO BUY:
               </div>
               <form className="flex flex-col gap-4 mt-5">
                 <input
@@ -152,6 +155,15 @@ function ItemDetails() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
+                />
+                
+                <input
+                  className=" border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
+                  type="text"
+                  placeholder="Product Name"
+                  value={product}
+                  required
+                  onChange={(e) => setProduct(e.target.value)}
                 />
                 <input
                   className=" border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"

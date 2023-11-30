@@ -1,0 +1,21 @@
+@media screen and (max-width: 1120px) {
+    .nav-links {
+      display: none;
+    }
+    .burger-links{
+        display: block;
+    }
+
+}
+
+@media screen and (min-width: 1120px) {
+    .burger-links {
+      display: none;
+    }
+    .burger-links-item{
+        display: none;
+    }
+    .nav-links {
+        display: block;
+      }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, Navigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from 'react-router-dom';
 function Login() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -35,11 +35,11 @@ function Login() {
         <input type='text' placeholder='Enter your email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-         className='border border-gray-300 rounded-md p-2 mt-3 w-96  text-black'/>
+         className='border border-gray-300 rounded-md p-2 mt-3 w-64 md:w-96  text-black'/>
         <input type='text'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-         placeholder='Enter your password' className='border border-gray-300 rounded-md p-2 mt-3 w-96  text-black'/>
+         placeholder='Enter your password' className='border border-gray-300 rounded-md p-2 mt-3 w-64 md:w-96  text-black'/>
         <button
         type='submit'
         onClick={loginHandle}
