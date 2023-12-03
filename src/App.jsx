@@ -52,7 +52,7 @@ function App() {
           <div className='w-full text-center text-xl animate-bounce hover:underline transition-all select-none text-slate-500'>
             BestSeller
           </div>
-          <div className='w-full flex justify-evenly mt-6 card-show'>
+          <div className='w-full h-full flex justify-evenly mt-6 card-show'>
           {
               array.map((item) => (
                   data[item].tag==='bestseller'&&(Bcount=Bcount+1)<=4?
