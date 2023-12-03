@@ -4,14 +4,15 @@ import { doc,deleteDoc, getDocs, collection, updateDoc, where } from "firebase/f
 
 function Queries() {
   const [data, setData] = React.useState([]);
-  React.useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
 
       let queryData = collection(fs, "queries");
       let queryDataSnapshot = await getDocs(queryData);
       const result = queryDataSnapshot.docs.map((doc) => doc.data());
       setData(result);
     };
+  
+  React.useEffect(() => {
     fetchData();
   }, []);
   return (
@@ -35,20 +36,25 @@ function Queries() {
 }
 
 const QuerieBox = ({uid, name, email, phoneNo, address, isDone ,product}) => {
-
+  const [setMsg , setSetMsg] = React.useState('');
   const handleDone = async () => {
     const doneRef = doc(fs, "queries", uid);
     await updateDoc(doneRef, {
       done: !isDone,
     });
-    window.location.assign("/queries");
+    setSetMsg('This will update soon...');
+    setTimeout(() => {
+      setSetMsg('');
+    }, 2000);
   };
   const handleDelete = async () => {
     const deleteRef = doc(fs, "queries", uid);
     await deleteDoc(deleteRef);
-    window.location.assign("/queries");
-  }
-  
+    setSetMsg('This will delete soon...');
+    setTimeout(() => {
+      setSetMsg('');
+    }, 5000);
+  };
   return (
     <div
       className={`text-black relative overflow-auto my-4 ${
@@ -79,6 +85,7 @@ const QuerieBox = ({uid, name, email, phoneNo, address, isDone ,product}) => {
           className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700">
             Delete
           </button>
+          <div className='text-black text-center'>{setMsg}</div>
         </div>
       </div>
     </div>
