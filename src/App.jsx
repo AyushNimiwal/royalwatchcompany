@@ -37,7 +37,7 @@ function App() {
       <div className=' relative '>
         <div className='w-full flex items-top justify-center mt-4'>
           <Carousel 
-          autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false} showArrows={false} interval={3000} transitionTime={1000} className=' w-3/4 shadow-2xl div-carousel'>
+          autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false} showArrows={false} interval={3000} transitionTime={1000} className=' w-11/12 shadow-2xl div-carousel'>
             
               <div className='w-full object-cover div-carousel'>
                 <img className='w-full h-full' src={l8} />

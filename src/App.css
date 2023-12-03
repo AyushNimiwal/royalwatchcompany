@@ -1,6 +1,6 @@
 @media screen and (max-width: 768px) {
     .div-carousel {
-      height: 350px;
+      height: 400px;
     }
     .card-show{
       flex-direction: column;
@@ -25,7 +25,7 @@
 }
 @media screen and (min-width: 768px) {
     .div-carousel {
-      height:600px;
+      height: 700px;
     }
     
     .two-items{
