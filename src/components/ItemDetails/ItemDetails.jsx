@@ -120,11 +120,11 @@ function ItemDetails() {
             showThumbs
             showArrows={false}
             showStatus={false}
-            className='w-full md:h-[600px] h-[400px]'
+            className='w-full md:h-[600px] h-[350px]'
           >
             {
               img.length>0 && img.map((image) => (
-                  <div className="block m-auto md:h-[600px] h-[400px] w-full object-cover">
+                  <div className="block m-auto md:h-[600px] h-[350px] w-full object-cover">
                     <img
                       className=" w-full h-full rounded-md"
                       src={image}
@@ -136,7 +136,7 @@ function ItemDetails() {
         </div>
         {array.map((item) =>
           item === id ? (
-            <div key={id} className="w-full md:w-1/2 h-full p-5 bg-zinc-800 rounded-md">
+            <div key={id} className="w-full md:w-1/2 h-full md:p-5 px-2 py-5 bg-zinc-800 rounded-md">
               <div className=" text-4xl font-serif mb-5">
                 {data[item].title}
               </div>
@@ -144,7 +144,7 @@ function ItemDetails() {
               <div className=" font-bold text-4xl mb-5">
                 ₹ {data[item].price}
               </div>
-              <div className=" text-yellow-300 font-mono md:text-2xl text-xl py-2 md:px-8 px-2 text-center rounded-full">
+              <div className=" text-yellow-300 font-mono md:text-2xl text-xl py-2 md:px-8 text-center rounded-full">
                 FILL THE DETAILS TO BUY:
               </div>
               <form className="flex flex-col gap-4 mt-5">
