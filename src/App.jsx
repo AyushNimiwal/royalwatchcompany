@@ -78,7 +78,7 @@ function App() {
                 </div> 
             </div></Link>
         </div>
-        <div className=' mt-20'>
+        <div className=' md:mt-20 mt-6'>
           <div className='w-full text-center text-xl hover:underline transition-all select-none text-slate-500'>
             Mens Watches
           </div>

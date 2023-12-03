@@ -120,11 +120,11 @@ function ItemDetails() {
             showThumbs
             showArrows={false}
             showStatus={false}
-            className='w-full md:h-[600px] h-[500px]'
+            className='w-full md:h-[600px] h-[300px]'
           >
             {
               img.length>0 && img.map((image) => (
-                  <div className="block m-auto md:h-[600px] h-[500px] w-full object-cover">
+                  <div className="block m-auto md:h-[600px] h-[300px] w-full object-cover">
                     <img
                       className=" w-full h-full rounded-md"
                       src={image}
