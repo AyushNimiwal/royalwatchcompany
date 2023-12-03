@@ -144,7 +144,7 @@ function ItemDetails() {
               <div className=" font-bold text-4xl mb-5">
                 ₹ {data[item].price}
               </div>
-              <div className=" text-yellow-300 font-mono text-2xl py-2 px-8 text-center rounded-full">
+              <div className=" text-yellow-300 font-mono md:text-2xl text-xl py-2 md:px-8 px-2 text-center rounded-full">
                 FILL THE DETAILS TO BUY:
               </div>
               <form className="flex flex-col gap-4 mt-5">
