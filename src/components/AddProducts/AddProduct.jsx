@@ -57,10 +57,10 @@ function AddProduct() {
         }
       );
     }
-    setMsg("Please wait 10 seconds before adding another product");
+    setMsg("Please wait...");
       setTimeout(() => {
-        setMsg("Now you can add product");
-      }, 10000);
+        setMsg("");
+      }, 5000);
   };
 
   return (

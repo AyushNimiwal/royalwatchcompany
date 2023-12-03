@@ -52,17 +52,17 @@ function App() {
           <div className='w-full text-center text-xl animate-bounce hover:underline transition-all select-none text-slate-500'>
             BestSeller
           </div>
-          <div className='w-full flex justify-evenly mt-10 card-show'>
+          <div className='w-full flex justify-evenly mt-6 card-show'>
           {
               array.map((item) => (
-                  data[item].tag==='bestseller'&&(Bcount=Bcount+1)<4?
+                  data[item].tag==='bestseller'&&(Bcount=Bcount+1)<=4?
                     <Card key={item} product={data[item]} id={item} />
                 :<></>
               ))
           }   
           </div>
         </div>
-        <div className='flex justify-around mt-6 two-card-show'>
+        <div className='flex justify-around two-card-show'>
           <Link to='/mens'>
             <div className=' m-4 relative object-cover two-items rounded-xl hover:shadow-2xl hover:scale-95 transition-transform'>
                 <img src={l3jpg} className=' absolute rounded-xl two-item-img hover:scale-95'/>
@@ -78,28 +78,28 @@ function App() {
                 </div> 
             </div></Link>
         </div>
-        <div className='mt-10'>
+        <div className=' mt-20'>
           <div className='w-full text-center text-xl hover:underline transition-all select-none text-slate-500'>
             Mens Watches
           </div>
           <div className='w-full flex justify-evenly mt-6 card-show'>
           {
               array.map((item) => (
-                data[item].tag==='mens'&&(Mcount=Mcount+1)<4?
+                data[item].tag==='mens'&&(Mcount=Mcount+1)<=4?
                   <Card key={item} product={data[item]} id={item} />
               :<></>
             ))
           }   
           </div>
         </div>
-        <div className='mt-2'>
+        <div className=''>
           <div className='w-full text-center text-xl hover:underline transition-all select-none text-slate-500'>
             Womens Watches
           </div>
           <div className='w-full flex justify-evenly mt-6 card-show'>
           {
               array.map((item) => (
-                data[item].tag==='womens'&&(Wcount=Wcount+1)<4?
+                data[item].tag==='womens'&&(Wcount=Wcount+1)<=4?
                   <Card key={item} product={data[item]} id={item} />
               :<></>
             ))

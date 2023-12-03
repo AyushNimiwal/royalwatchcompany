@@ -25,17 +25,16 @@
 }
 @media screen and (min-width: 768px) {
     .div-carousel {
-      height: 600px;
-      max-height:900px;
+      height:600px;
     }
     
     .two-items{
-      height: 256px;
-      width: 384px;
+      height: 300px;
+      width: 450px;
     }
     .two-item-img{
-      height: 256px;
-      width: 384px;
+      height: 300px;
+      width: 450px;
     }
     .two-card-show{
       width: 100%;

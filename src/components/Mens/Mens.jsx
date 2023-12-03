@@ -21,7 +21,7 @@ function Mens() {
   return (
     <>
       <div className='text-slate-500 m-5 text-2xl'>Mens Watches</div>
-      <div className='w-screen flex flex-col justify-center items-center md:block mt-[6rem] md:mt-0'>
+      <div className='w-full flex justify-evenly items-center md:block mt-[6rem] md:mt-0'>
       {
           array.map((item) => (
               data[item].tag==='mens'?
