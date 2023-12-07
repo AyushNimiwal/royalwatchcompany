@@ -1,15 +1,13 @@
 import React,{ useState } from 'react'
 import './App.css'
-import l8 from './assets/l8.jpg'
-import l9 from './assets/l9.jpg'
 import l3jpg from './assets/l3jpg.jpg'
 import lady from './assets/lady.jpg'
+import { NavLink } from 'react-router-dom'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import Card from './Card/Card';
 import { getDatabase, ref, onValue } from "firebase/database";
 import { Link } from 'react-router-dom'
-import Footer from './components/Footer/Footer'
 function App() {
   const [data, setData] = React.useState([]);
   const [array, setArray] = React.useState([]);
@@ -33,23 +31,15 @@ function App() {
   
   return (
     <>
-    <div className=' w-screen h-screen block'>
-      <div className=' relative '>
-        <div className='w-full flex items-top justify-center mt-4'>
-          <Carousel 
-          autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false} showArrows={false} interval={3000} transitionTime={1000} className=' w-11/12 shadow-2xl div-carousel'>
-            
-              <div className='w-full object-cover div-carousel'>
-                <img className='w-full h-full' src={l8} />
-              </div>
-              <div className='w-full object-cover div-carousel'>
-                <img className='w-full h-full' src={l9} />
-              </div>
-          </Carousel>
-        
+    <div className='w-full h-full'>
+        <div className='w-full md:flex mt-4 justify-around '>
+        <NavLink to='/mens'><div className='px-4 md:py-3 py-4 text-center mx-24  my-3 bg-gradient-to-br from-black via-gray-900 to-gray-700 rounded-md hover:scale-105 hover:text-orange-300 shadow-xl text-xl'>Mens</div></NavLink>
+        <NavLink to='/womens'><div className='px-4 md:py-3 py-4 text-center mx-24  my-3 bg-gradient-to-bl from-black via-gray-900 to-gray-700 rounded-md hover:scale-105 hover:text-orange-300 shadow-xl text-xl'>Womens</div></NavLink>
+        <NavLink to='/goggles'><div className='px-4 md:py-3 py-4 text-center mx-24  my-3 bg-gradient-to-tr from-black via-gray-900 to-gray-700 rounded-md hover:scale-105 hover:text-orange-300 shadow-xl text-xl'>Goggles</div></NavLink>
+        <NavLink to='/accessories'><div className='px-4 md:py-3 py-4 text-center mx-24  my-3 bg-gradient-to-tl from-black via-gray-900 to-gray-700 rounded-md hover:scale-105 hover:text-orange-300 shadow-xl text-xl'>Accessories</div></NavLink>
         </div>
         <div className='mt-10'>
-          <div className='w-full text-center text-xl animate-bounce hover:underline transition-all select-none text-slate-500'>
+          <div className='w-full text-center text-2xl animate-bounce hover:underline transition-all select-none text-slate-500'>
             BestSeller
           </div>
           <div className='w-full h-full flex justify-evenly mt-6 card-show'>
@@ -106,8 +96,6 @@ function App() {
           }   
           </div>
         </div>
-      <Footer/>
-      </div>
       </div>
     </>
   )

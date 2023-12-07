@@ -31,6 +31,7 @@ function Login() {
         });
     };
   return (
+    <div className='w-full h-screen'>
     <form className='flex flex-col items-center justify-center'>
         <input type='text' placeholder='Enter your email'
         value={email}
@@ -50,6 +51,7 @@ function Login() {
         <div className='text-red-500'>{fail&&'Failure'}</div>
         <div className='text-green-500'>{success}</div>
     </form>
+    </div>
   )
 }
 

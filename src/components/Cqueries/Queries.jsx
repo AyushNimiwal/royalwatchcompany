@@ -1,6 +1,6 @@
 import React from "react";
 import { fs } from "../../config/config";
-import { doc,deleteDoc, getDocs, collection, updateDoc, where } from "firebase/firestore";
+import { doc,deleteDoc, getDocs, collection, updateDoc } from "firebase/firestore";
 
 function Queries() {
   const [data, setData] = React.useState([]);

@@ -1,7 +1,5 @@
 @media screen and (max-width: 768px) {
-    .div-carousel {
-      height: 400px;
-    }
+    
     .card-show{
       flex-direction: column;
       justify-content: center;
@@ -23,10 +21,11 @@
     }
     
 }
+
+
+
 @media screen and (min-width: 768px) {
-    .div-carousel {
-      height: 700px;
-    }
+    
     
     .two-items{
       height: 300px;

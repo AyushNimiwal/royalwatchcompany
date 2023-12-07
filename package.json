@@ -20,6 +20,7 @@
     "react-router-dom": "^6.20.1",
     "react-slick": "^0.29.0",
     "react-social-icons": "^6.7.0",
+    "react-whatsapp": "^0.3.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

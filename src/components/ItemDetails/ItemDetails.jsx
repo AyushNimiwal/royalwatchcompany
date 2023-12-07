@@ -4,25 +4,19 @@ import { useParams } from "react-router-dom";
 import { getDatabase, ref, onValue, remove, set } from "firebase/database";
 import { getStorage, ref as storageRef, deleteObject } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
-import { setDoc, doc } from "firebase/firestore";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
-import { fs } from "../../config/config";
-import { nanoid } from "nanoid";
+import ReactWhatsapp from 'react-whatsapp';
+import { SocialIcon } from 'react-social-icons'
 function ItemDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = React.useState([]);
   const [array, setArray] = React.useState([]);
   const [img, setImg] = React.useState([]);
-  const [name, setName] = React.useState("");
-  const [address, setAddress] = React.useState("");
-  const [phone, setPhone] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [success, setsuccess] = React.useState("");
-  const [product, setProduct] = React.useState("");
   const auth = getAuth();
   const [show, setShow] = React.useState(false);
+  const wpIcon=<SocialIcon network='whatsapp' url='https://www.whatsapp.com/'/>
 
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -81,36 +75,11 @@ function ItemDetails() {
     );
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (name && address && phone && email) {
-      const uid=nanoid();
-      console.log(uid);
-      const docRef = setDoc(doc(fs, "queries",uid), {
-        id:uid,
-        name: name,
-        email: email,
-        address: address,
-        phone: phone,
-        done: false,
-        product:product,
-      });
-      setsuccess('We will contact you soon!');
-      setName("");
-      setAddress("");
-      setPhone("");
-      setEmail("");
-      setProduct("");
-      setTimeout(() => {
-        setsuccess("");
-      }, 3000);
-    }
-  };
 
   return (
     
-    <div className="w-full mt-[5rem] md:mt-5 h-full flex items-center justify-center bg-white/25 p-5">
-      <div className=" md:w-[1250px] w-screen md:h-[750px] h-full bg-white/30 md:flex justify-center  items-center">
+    <div className="w-full mt-[5rem] md:mt-5 h-screen flex items-center justify-center bg-white/25 p-5">
+      <div className=" md:w-[850px] w-screen md:h-[550px] h-full bg-white/30 md:flex justify-center  items-center">
         <div className="w-full md:w-1/2 md:mb-0 mb-28 h-full bg-white/30 p-2 md:p-4 backdrop-blur-md object-cover">
           
           <Carousel
@@ -120,11 +89,11 @@ function ItemDetails() {
             showThumbs
             showArrows={false}
             showStatus={false}
-            className='w-full md:h-[600px] h-[350px]'
+            className='w-full md:h-[400px] h-[350px]'
           >
             {
               img.length>0 && img.map((image) => (
-                  <div className="block m-auto md:h-[600px] h-[350px] w-full object-cover">
+                  <div className="block m-auto md:h-[400px] h-[350px] w-full object-cover">
                     <img
                       className=" w-full h-full rounded-md"
                       src={image}
@@ -144,59 +113,7 @@ function ItemDetails() {
               <div className=" font-bold text-4xl mb-5">
                 ₹ {data[item].price}
               </div>
-              <div className=" text-yellow-300 font-mono md:text-2xl text-xl py-2 md:px-8 text-center rounded-full">
-                FILL THE DETAILS TO BUY:
-              </div>
-              <form className="flex flex-col gap-4 mt-5">
-                <input
-                  className=" border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
-                  type="text"
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-                
-                <input
-                  className=" border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
-                  type="text"
-                  placeholder="Product Name"
-                  value={product}
-                  required
-                  onChange={(e) => setProduct(e.target.value)}
-                />
-                <input
-                  className=" border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
-                  type="text"
-                  placeholder="Address"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  required
-                />
-                <input
-                  className=" border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
-                  type="text"
-                  placeholder="Phone Number"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  required
-                />
-                <input
-                  className=" border border-gray-300 rounded-md p-2 mt-1 w-full  text-black"
-                  type="text"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <button
-                  onClick={handleSubmit}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Submit
-                </button>
-                <div className="text-green-500 font-bold">{success}</div>
-              </form>
+              <div className=" border-green-400 border-2 px-4 py-2 w-fit text-2xl hover:border-white hover:text-green-400 hover:transition-colors rounded-lg"><ReactWhatsapp number="+91 9694967497" message={`Product Name: ${data[item].title}. I have shown my interest in this product. Provide me more details.`}>{wpIcon} For Inquiry</ReactWhatsapp></div>
               {show&&
               <button
                 onClick={handleDelete}
